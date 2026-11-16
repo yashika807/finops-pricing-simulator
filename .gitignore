@@ -1,0 +1,4 @@
+out/
+cache/
+.claude/
+.DS_Store

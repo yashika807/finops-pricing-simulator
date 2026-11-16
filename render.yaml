@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: finops-pricing-simulator
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/meta
+    autoDeploy: true
