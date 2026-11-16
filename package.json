@@ -1,0 +1,6 @@
+{
+  "name": "finops-pricing-simulator",
+  "private": true,
+  "description": "Web deployment of the FinOps Pricing Simulator (serverless port of the Java engine)",
+  "engines": { "node": ">=18" }
+}

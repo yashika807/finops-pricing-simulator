@@ -69,6 +69,13 @@ java -cp out FinOpsPricingSimulator --self-test
 
 `./run.sh`, `./run.sh web` and `./run.sh test` do the same things.
 
+## Public deployment (Vercel)
+
+Vercel cannot run a long-running Java server, so the public link uses `lib/finops.js`. This is a line-by-line
+JavaScript port of the Java engine, served by the serverless functions in `api/` (`/api/meta`, `/api/simulate`).
+It uses the same live APIs and formulas and the same `web/index.html`, and it was checked to give identical totals to the Java version.
+`vercel.json` serves `web/` as the site. The Java/Swing program stays the submitted course code.
+
 ## Files
 
 - `src/FinOpsPricingSimulator.java`: Swing GUI and entry point
