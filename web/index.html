@@ -215,6 +215,14 @@ async function init() {
     $('articleBox').hidden = $('workload').value !== 'ARTICLE';
     $('csvBox').hidden = $('workload').value !== 'CSV';
   };
+  // Shareable links: e.g. /?workload=SPIKY&region=centralindia&currency=INR
+  const qp = new URLSearchParams(location.search);
+  ['region', 'sku', 'currency', 'term', 'workload', 'article', 'fleet', 'demand', 'price', 'storage', 'egress', 'restart', 'checkpoint', 'impact']
+    .forEach(k => { if (qp.has(k)) $(k).value = qp.get(k); });
+  if (qp.get('tolerant') === 'false') $('tolerant').checked = false;
+  if (qp.get('theme') === 'light') Object.entries({ '--bg': '#f4f6fa', '--card': '#ffffff', '--ink': '#18212f', '--muted': '#5d6b7e', '--line': '#e3e8ef',
+    '--accent': '#1f5fbf', '--accent-soft': '#e7effb', '--good': '#12805c', '--warn': '#a15c00', '--bad': '#b42318',
+    '--s1': '#6b7a90', '--s2': '#1f5fbf', '--s3': '#e07a1f', '--s4': '#12805c' }).forEach(([k, v]) => document.documentElement.style.setProperty(k, v));
   $('workload').addEventListener('change', onPreset); onPreset();
   $('csvFile').addEventListener('change', async e => { const f = e.target.files[0]; if (f) $('csv').value = await f.text(); });
   $('run').addEventListener('click', run);
